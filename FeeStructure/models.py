@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 
 class FeeFormat(models.Model):
@@ -14,10 +13,16 @@ class FeeFormat(models.Model):
         ("SEM8", 'Semester 8'),
     )
 
-    receipt_number = models.IntegerField()
-    received_sum = models.IntegerField()
+  
+
+    receipt_number = models.IntegerField(default= 0)
+    received_sum = models.IntegerField(default= 0)
     date = models.DateField()
-    student_name = models.CharField(max_length= 80)
-    enrolment_number = models.IntegerField()
+    student_name = models.CharField(max_length= 80, default= "Student Name")
+    enrolment_number = models.IntegerField(default= 0)
     semester = models.CharField(max_length= 11, choices= SEMESTERS, default= SEMESTERS[6])
+    Stream = models.CharField(max_length= 10, default="Stream")
+    payment_mode = models.CharField(max_length= 10, default= "Payment Mode")
+    transaction_number = models.BigIntegerField(default= 0)
+    cheque_date = models.DateField()
     

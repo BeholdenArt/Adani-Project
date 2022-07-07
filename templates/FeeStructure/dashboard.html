@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		<form action="insert-data" method="post">
+			{% csrf_token %}
 			<label for="receipt-number">Receipt Number: </label>
 			<input
 				type="text"
@@ -29,7 +30,7 @@
 				type="date"
 				name="submission-date"
 				id="submission-date"
-				placeholder="Enter Date"
+				value="2022-07-07"
 			/><br />
 			<label for="student-name">Student Name: </label>
 			<input
@@ -66,6 +67,40 @@
 					<option value="sem8">Semester 8</option>
 				</optgroup>
 			</select>
+			<br />
+			<label for="stream-select">Stream: </label>
+			<select name="stream-select" id="stream-select">
+				<option value="ICT">ICT</option>
+				<option value="CIVIL">Civil</option>
+				<option value="ELECTRICAL">Electrical</option>
+				<option value="CS">CS</option>
+			</select>
+			<br />
+			<label for="payment-mode">Payment Mode: </label>
+			<select name="payment-mode" id="payment-mode">
+				<option value="cheque">Cheque</option>
+				<option value="draft">Draft</option>
+				<option value="paytm">Paytm</option>
+			</select>
+			<br />
+			<label for="transaction-number">Transaction Number: </label>
+			<input
+				type="number"
+				name="transaction-number"
+				id="transaction-number"
+				placeholder="Enter Transaction number"
+			/>
+			<br />
+			<label for="cheque-date">Cheque/Draft Date: </label>
+			<input
+				type="date"
+				name="cheque-date"
+				id="cheque-date"
+				value="2022-07-07"
+			/>
+			<br />
+
+			<button type="submit">Submit</button>
 		</form>
 	</body>
 </html>

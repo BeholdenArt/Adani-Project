@@ -2,7 +2,6 @@ from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-
 # Create your views here.
 def dashboard(request):
     return HttpResponse("Dashboard")
@@ -16,8 +15,15 @@ def enter_data(request):
         student_name = request.POST['student-name']
         enrolment_number = request.POST['enrolment-number']
         semester = request.POST['semester-select']
+        stream = request.POST["stream-select"]
+        payment_mode = request.POST["payment-mode"]
+        transaction_number = request.POST['transaction-number']
+        cheque_date = request.POST["cheque-date"]
 
-        print(student_name, semester)
+        
+        print(receipt_number, received_sum, date, student_name, enrolment_number, semester, stream, payment_mode, transaction_number, cheque_date)
+        
         return HttpResponse("SUCCESS")
+
     else:
-        return redirect('Dashboard')
+        return render(request, "FeeStructure/dashboard.html")
