@@ -13,16 +13,28 @@ class FeeFormat(models.Model):
         ("SEM8", 'Semester 8'),
     )
 
+    STREAMS = (
+        ("ICT", "Information and Communication Technology"), 
+        ("CIVIL", "Civil"),
+        ("ELE", "Electrical"), 
+        ("CS", "CS"),
+    )
   
-
-    receipt_number = models.IntegerField(default= 0)
+    PAYMENT_METHODS = (
+        ("CHEQUE", "Cheque"),
+        ("DRAFT", "Draft"),
+        ("PAYTM", "Paytm"),
+    )
+    receipt_number = models.BigIntegerField(default= 0)
     received_sum = models.IntegerField(default= 0)
     date = models.DateField()
     student_name = models.CharField(max_length= 80, default= "Student Name")
-    enrolment_number = models.IntegerField(default= 0)
+    enrolment_number = models.BigIntegerField(default= 0)
     semester = models.CharField(max_length= 11, choices= SEMESTERS, default= SEMESTERS[6])
-    Stream = models.CharField(max_length= 10, default="Stream")
-    payment_mode = models.CharField(max_length= 10, default= "Payment Mode")
+    stream = models.CharField(max_length= 10, choices=STREAMS, default=STREAMS[0])
+    payment_mode = models.CharField(max_length= 10, choices=PAYMENT_METHODS, default= PAYMENT_METHODS[2])
     transaction_number = models.BigIntegerField(default= 0)
     cheque_date = models.DateField()
     
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now= True)
