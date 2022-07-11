@@ -3,5 +3,6 @@ from FeeStructure import views
 
 urlpatterns = [
     path('', views.dashboard, name="Dashboard"),
-    path('insert-data', views.enter_data, name='DataEnter')
+    path('insert-data', views.enter_data, name='DataEnter'), 
+    path('retrieve-data', views.retrieve_data, name="DataRetrieval"), 
 ]

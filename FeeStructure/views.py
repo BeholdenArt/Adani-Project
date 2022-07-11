@@ -5,7 +5,7 @@ from FeeStructure.models import FeeFormat
 
 # Create your views here.
 def dashboard(request):
-    return HttpResponse("Dashboard")
+    return render(request, "FeeStructure/dashboard.html")
 
 
 def enter_data(request):
@@ -38,4 +38,17 @@ def enter_data(request):
 
         # redirect('insert-data')
     else:
-        return render(request, "FeeStructure/dashboard.html")
+        return render(request, "FeeStructure/insertData.html")
+
+
+def retrieve_data(request):
+    if request.method == "POST":
+        value = request.POST['enrolment-number']
+        print(value)
+        student_data = FeeFormat.objects.filter(enrolment_number__exact=value)
+        print(student_data.values('cheque_date'))
+        # student_data = FeeFormat.objects.filter(enrolment_number__ == value)
+        # print(student_data)
+        return render(request, 'FeeStructure/retrieve.html', {'studentData': student_data})
+    else:
+        return render(request, 'FeeStructure/retrieve.html')

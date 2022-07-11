@@ -29,7 +29,7 @@ class FeeFormat(models.Model):
     received_sum = models.IntegerField(default= 0)
     date = models.DateField()
     student_name = models.CharField(max_length= 80, default= "Student Name")
-    enrolment_number = models.BigIntegerField(default= 0)
+    enrolment_number = models.CharField(max_length=12)
     semester = models.CharField(max_length= 11, choices= SEMESTERS, default= SEMESTERS[6])
     stream = models.CharField(max_length= 10, choices=STREAMS, default=STREAMS[0])
     payment_mode = models.CharField(max_length= 10, choices=PAYMENT_METHODS, default= PAYMENT_METHODS[2])
